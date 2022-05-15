@@ -7,10 +7,15 @@
 #include <QTranslator>
 
 namespace chess {
-class App {
+class App : public QObject {
+    Q_OBJECT
   public:
     App(int argc, char *argv[]);
     int exec();
+  signals:
+    void languageChanged();
+  public slots:
+    void changeLanguage(QString);
   private:
     QGuiApplication app_;
     QTranslator translator_;
